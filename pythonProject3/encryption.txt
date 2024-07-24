@@ -1,0 +1,11 @@
+def register_account(first_name, last_name, username, email, password):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    # Hash the password using SHA-256
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
+    c.execute("INSERT INTO accounts (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, ?)",
+              (first_name, last_name, username, email, hashed_password))
+    conn.commit()
+    conn.close()
