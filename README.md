@@ -1,1 +1,1 @@
-This project was just a uni project.
+This project.
